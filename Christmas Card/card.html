@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cardcatApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>card</title>
+    <!--styles-->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="fonts/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--js-->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/sly.js"></script>
+    <script src="js/sly.min.js"></script>
+    <script src="js/bootstrap-tooltip.js"></script>
+    <!--angular.js-->
+    <script src="js/angular.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+<body>
+    <header>
+        <div class="row">
+            <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
+                <a href="index.html"><img class="header_logo" src="images/Logotype.png" alt="logotype"></a>
+            </div>
+            <div class="col-xs-0 col-sm-2 col-md-4 col-lg-4"></div>
+            <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
+                <ul class="header_list">
+                    <li class="header_list__item"><a href="policy.html" class="header_list__item___link">policy</a></li>
+                    <li class="header_list__item"><a href="contacts.html" class="header_list__item___link">contacts</a></li>
+                    <li class="header_list__item"><a href="about.html" class="header_list__item___link">about</a></li>
+                    <li class="header_list__item"><a href="#" id="card" class="header_list__item___link_active">card</a></li>
+                    <li class="header_list__item"><a href="index.html" class="header_list__item___link">intro</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div  id="rowCarousel" class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="carousel_complex">
+                    <div id="back_l" class="carousel_back__l"></div>
+                    <div id="back_b" class="carousel_back__b"></div>
+                    <div id="back_r" class="carousel_back__r"></div>
+                    <div id="back_p" class="carousel_back__p"></div>
+                    <div id="back_t" class="carousel_back__t"></div>
+                    <div id="back_g" class="carousel_back__g"></div>
+                    <!--Carousel-->
+                    <main ng-controller="CardListCtrl">
+                        <div id="pattern" class="carousel_pattern">
+                            <div id="frame_pattern">
+                                <ul class="slidee_pattern">
+                                    <li ng-repeat="card in cards"><img ng-src="{{card.patternUrl}}"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="tree" class="carousel_tree">
+                            <div id="frame_tree">
+                                <ul class="slidee_tree">
+                                    <li ng-repeat="card in cards"><img ng-src="{{card.treeUrl}}"></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="gifts" class="carousel_gifts">
+                            <div id="frame_gifts">
+                                <ul class="slidee_gifts">
+                                    <li ng-repeat="card in cards"><img ng-src="{{card.giftsUrl}}"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </main>
+                    <!--End Carousel-->
+                </div>
+            </div>
+        </div>
+        <div id="rowFlip" class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="front">
+                            <!-- front content -->
+                            <div id="front_b" class="carousel_back__b"></div>
+                            <div id="front_p" class="carousel_back__p"></div>
+                            <div id="front_t" class="carousel_back__t"></div>
+                            <div id="front_g" class="carousel_back__g"></div>
+                        </div>
+                        <div class="back">
+                            <!-- back content -->
+                            <textarea spellcheck="false" class="flip_text" name="" id="txtText" maxlength="380" placeholder="Your text..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+        </div>
+        <!--card-->
+        <div id="rowSend" class="row_send">
+            <div class="row_send__box">
+                <div class="row_send__box_dark">
+                    <p class="row_send__box_dark__p">Send your card in the social network or by the classic way on email.</p>
+                    <a href=""><img class="row_send__box_dark__img__social_f" src="images/Facebook-Button.png" alt="facebook"></a>
+                    <a href=""><img class="row_send__box_dark__img__social_vk" src="images/Vkontakte-Button.png" alt="vk"></a>
+                </div>
+                <div class="row_send__box_form">
+                    <label class="row_send__box_form___p">Send it to:</label>
+                    <input class="row_send__box_form__input_mail" id="txtMail" type="email" name="mail"></br>
+                    <div id="err_mail">* email not correct</div>
+                    <label class="row_send__box_form__input_check">
+                    <input class="row_send__box_form__input_checkbox" id="accept" type="checkbox" name="agree" value=""> I accept the <a class="row_send__box_form__input_label_link" href="">privacy policy</a>
+                    <div id="err_acc">* Are you accepting the privacy policy?</div>
+                    </label><br>
+                    <a id="btnGo" href="thank_you.html" class="row_send__box_form__button">GO!</a>
+                </div>
+            </div>
+        </div>
+        <!--buttons-->
+        <div id="rowBtn" class="row_progress">
+            <ul class="row_progress__list">
+                <li id="btnPattern" class="row_progress__list___item">
+                    <a href="#"><img src="images/btn/Button_pattern.png" class="row_progress__list___item____img"></a></br>
+                    <a class="row_progress__list___item____link" href="#">Pattern</a>
+                </li>
+                <li id="btnTree" class="row_progress__list___item">
+                    <a href="#"><img src="images/btn/Button_tree.png" class="row_progress__list___item____img"></a></br>
+                    <a class="row_progress__list___item____link" href="#">Tree</a>
+                </li>
+                <li id="btnGifts" class="row_progress__list___item">
+                    <a href="#"><img src="images/btn/Button_gifts.png" class="row_progress__list___item____img"></a></br>
+                    <a class="row_progress__list___item____link" href="#">Gifts</a>
+                </li>
+                <li id="btnMessage" class="row_progress__list___item">
+                    <a href="#"><img src="images/btn/Button_Text.png" class="row_progress__list___item____img"></a></br>
+                    <a class="row_progress__list___item____link" href="#">Message</a>
+                </li>
+                <li id="btnSend" class="row_progress__list___item">
+                    <a href="#"><img src="images/btn/Button_envelope.png" class="row_progress__list___item____img"></a></br>
+                    <a class="row_progress__list___item____link" href="#">Send</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <div class="row">
+            <div class="footer_col col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <p class="footer_p__left"><span id="counter" class="footer_counter" href=""></span> cards were made</p>
+            </div>
+            <div class="footer_col col-xs-12 col-sm-6 col-md-4 col-lg-4"></div>
+            <div class="footer_col col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                <ul class="footer_list">
+                    <li class="footer_list__item"><p class="footer_p__right">© servicename. 2015 All rights reserved.</p></li>
+                    <li class="footer_list__item"><a href="https://www.facebook.com"><i class="fa fa-facebook-f"></i></a></li>
+                    <li class="footer_list__item"><a href="https://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+                    <li class="footer_list__item"><a href="https://www.google.com"><i class="fa fa-google"></i></a></li>
+                    <li class="footer_list__item"><a href="https://www.instagram.com"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="js/onclick.js"></script>
+</body>
+</html>
