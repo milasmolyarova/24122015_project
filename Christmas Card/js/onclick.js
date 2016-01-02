@@ -8,16 +8,12 @@ var patternChangeStyle = document.getElementById('pattern');
 var treeChangeStyle = document.getElementById('tree');
 var giftsChangeStyle = document.getElementById('gifts');
 
-var n = 10;
-var image_p;
-var image_t;
-var image_g;
-
 var log = function() { console.log.apply(console,[].slice.call(arguments,0)) };
 var sly = {};
 
 $(document).ready(function() {
-    var m = localStorage.getItem('card_counter'); //COUNTER
+    var m = localStorage.getItem('card_counter'); 
+    //COUNTER
       if (m === null) {
           m = 0;
       }
@@ -34,7 +30,8 @@ $(document).ready(function() {
       document.getElementById('counter').innerHTML = m;
     });
 
-    sly.pattern = new Sly('#frame_pattern',{ //CAROUSEL_PATTERN
+    sly.pattern = new Sly('#frame_pattern',{ 
+    //CAROUSEL_PATTERN
       horizontal: 1,
       itemNav: 'forceCentered',
       smart: 1,
@@ -47,7 +44,8 @@ $(document).ready(function() {
       startAt: 2
     }).init();
 
-    sly.tree = new Sly('#frame_tree',{ //CAROUSEL_TREE
+    sly.tree = new Sly('#frame_tree',{ 
+    //CAROUSEL_TREE
       horizontal: 1,
       itemNav: 'forceCentered',
       smart: 1,
@@ -60,7 +58,8 @@ $(document).ready(function() {
       startAt: 2
     }).init();
 
-    sly.gifts = new Sly('#frame_gifts',{ //CAROUSEL_GIFTS
+    sly.gifts = new Sly('#frame_gifts',{ 
+    //CAROUSEL_GIFTS
       horizontal: 1,
       itemNav: 'forceCentered',
       smart: 1,
@@ -87,7 +86,8 @@ $(document).ready(function() {
     $('#back_p').hide();
     $('#back_t').show();
     $('#back_g').show();
-    $('#btnGo').on('click', function(){                          //CHECK_FORM
+    $('#btnGo').on('click', function(){                          
+    //CHECK_FORM
         if(document.getElementById('txtMail').value.length!=0) {
             if(document.getElementById('txtMail').value.indexOf('@')<1) { 
                 document.getElementById('err_mail').style.display="block";
@@ -109,19 +109,22 @@ $(document).ready(function() {
     });
 });
 
-function pattern_changed() {     //PUT_ON_DIV_FOR_CARD
+function pattern_changed() {     
+//PUT_ON_DIV_FOR_CARD
     sly.pattern_img = $('#frame_pattern .active img').attr('src');
     log(sly.pattern_img);
     document.getElementById('back_p').innerHTML='<img src="'+sly.pattern_img+'" alt="pattern">';
 };
 
-function tree_changed() {         //PUT_ON_DIV_FOR_CARD
+function tree_changed() {         
+//PUT_ON_DIV_FOR_CARD
     sly.tree_img = $('#frame_tree .active img').attr('src');
     log(sly.tree_img);
     document.getElementById('back_t').innerHTML='<img src="'+sly.tree_img+'" alt="tree">';
 };
 
-function gifts_changed() {          //PUT_ON_DIV_FOR_CARD
+function gifts_changed() {          
+//PUT_ON_DIV_FOR_CARD
     sly.gifts_img = $('#frame_gifts .active img').attr('src');
     log(sly.gifts_img);
     document.getElementById('back_g').innerHTML='<img src="'+sly.gifts_img+'" alt="gifts">';
@@ -236,9 +239,9 @@ function funcClickGifts() {
 };
 
 function funcClickMessage() {
-    $('#front_p').innerHTML='<img src="'+sly.pattern_img+'" alt="pattern">';
-    $('#front_t').innerHTML='<img src="'+sly.tree_img+'" alt="tree">';
-    $('#front_g').innerHTML='<img src="'+sly.gifts_img+'" alt="gifts">';
+    document.getElementById('front_p').innerHTML='<img src="'+sly.pattern_img+'" alt="pattern">';
+    document.getElementById('front_t').innerHTML='<img src="'+sly.tree_img+'" alt="tree">';
+    document.getElementById('front_g').innerHTML='<img src="'+sly.gifts_img+'" alt="gifts">';
     $('#btnPattern .row_progress__list___item____link').css('fontWeight','normal');
     $('#btnTree .row_progress__list___item____link').css('fontWeight','normal');
     $('#btnGifts .row_progress__list___item____link').css('fontWeight','normal');
@@ -248,7 +251,8 @@ function funcClickMessage() {
     $('#rowSend').css('display','none');
     $('#rowFlip').css('display','block');
     $('#rowBtn').css('display','block');
-    $(document).ready(function(){               //HINT
+    $(document).ready(function(){
+    //HINT
         $('#btnMessage').tooltip({
             title : 'mouse over on your card',
             delay: { show: 500, hide: 500 }
@@ -261,7 +265,8 @@ function funcClickMessage() {
     for (i=0; i<elements.length; i++) {
      (function(element) {
        var id = element.getAttribute('id');
-       element.value = sessionStorage.getItem(id);           // SAVE_TEXTAREA
+       element.value = sessionStorage.getItem(id);
+    // SAVE_TEXTAREA
        element.oninput = function() {
          sessionStorage.setItem(id, element.value);
          checkValidity();
